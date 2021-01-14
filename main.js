@@ -26,7 +26,12 @@ client.once("ready", () => {
 });
 
 client.on("message", (message) => {
-	if (!message.content.includes("perhaps")) return;
+	if (
+		message.author.bot ||
+		!message.content ||
+		!message.content.toLowerCase().includes("perhaps")
+	)
+		return;
 	if (cooldowns.get(message.channel.id) + 1000 > Date.now()) return;
 
 	const perhapsImage = new Discord.MessageAttachment("./perhaps.jpg");
