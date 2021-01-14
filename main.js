@@ -34,10 +34,8 @@ client.on("message", (message) => {
 		return;
 	if (cooldowns.get(message.channel.id) + 1000 > Date.now()) return;
 
-	const perhapsImage = new Discord.MessageAttachment("./perhaps.jpg");
-
 	message.channel
-		.send(perhapsImage)
+		.send(new Discord.MessageAttachment("./perhaps.jpg"))
 		.catch((error) => {
 			console.error(
 				`Failed to perhaps in #${message.channel.name} (${
