@@ -1,0 +1,22 @@
+{
+  "name": "perhaps",
+  "version": "1.0.0",
+  "description": "A Discord bot that responds to any message containing \"perhaps\".",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickhasoccured/perhaps.git"
+  },
+  "author": "Nicholas Christopher <nchristopher@tuta.io> (nchristopher.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickhasoccured/perhaps/issues"
+  },
+  "homepage": "https://github.com/nickhasoccured/perhaps#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
