@@ -6,8 +6,10 @@ const client = new Discord.Client();
 
 const cooldowns = new Discord.Collection();
 
+const perhapsImage = new Discord.MessageAttachment("./perhaps.jpg");
+
 client.once("ready", () => {
-	console.log(`Logged in as ${client.user.tag}`);
+	console.log(`Logged in as ${client.user.tag} (${client.user.id})`);
 	client.user.setPresence({
 		activity: {
 			name: `${client.guilds.cache.size} servers!`,
@@ -35,15 +37,15 @@ client.on("message", (message) => {
 	if (cooldowns.get(message.channel.id) + 1000 > Date.now()) return;
 
 	message.channel
-		.send(new Discord.MessageAttachment("./perhaps.jpg"))
+		.send(perhapsImage)
 		.catch((error) => {
 			console.error(
 				`Failed to perhaps in #${message.channel.name} (${
 					message.channel.id
-				}) of server ${
+				}) ${
 					message.guild
-						? `${message.guild.name} (${message.guild.id})`
-						: "none"
+						? `of server ${message.guild.name} (${message.guild.id})`
+						: ""
 				}
                 ${error}`
 			);

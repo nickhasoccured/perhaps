@@ -1,6 +1,6 @@
 {
   "name": "perhaps",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A Discord bot that responds to any message containing \"perhaps\".",
   "main": "main.js",
   "repository": {
