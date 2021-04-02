@@ -14,6 +14,6 @@
 	},
 	"homepage": "https://github.com/nickhasoccured/perhaps#readme",
 	"dependencies": {
-		"discord.js": "^12.5.2"
+		"discord.js": "^12.5.3"
 	}
 }
