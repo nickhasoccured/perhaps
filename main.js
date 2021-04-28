@@ -41,8 +41,10 @@ client.on("message", (message) => {
 		message.author.bot ||
 		!message.content ||
 		!message.cleanContent.toLowerCase().includes("perhaps")
-	)
+	) {
 		return;
+	}
+
 	if (cooldowns.get(message.channel.id) + 1000 > Date.now()) return;
 
 	message.channel
