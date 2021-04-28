@@ -15,5 +15,10 @@
 	"homepage": "https://github.com/nickhasoccured/perhaps#readme",
 	"dependencies": {
 		"discord.js": "^12.5.3"
+	},
+	"devDependencies": {
+		"eslint": "^7.25.0",
+		"eslint-config-prettier": "^8.3.0",
+		"prettier": "^2.2.1"
 	}
 }
