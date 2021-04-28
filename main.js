@@ -17,22 +17,21 @@ const cooldowns = new Discord.Collection();
 
 const perhapsImage = new Discord.MessageAttachment("./perhaps.jpg");
 
-client.once("ready", () => {
-	console.log(`Logged in as ${client.user.tag} (${client.user.id})`);
-	client.user.setPresence({
+const updatePresence = (c) => {
+	c.user.setPresence({
 		activity: {
 			name: `${client.guilds.cache.size} servers!`,
 			type: "WATCHING",
 		},
 	});
+};
 
+client.once("ready", () => {
+	console.log(`Logged in as ${client.user.tag} (${client.user.id})`);
+
+	updatePresence(client);
 	setInterval(() => {
-		client.user.setPresence({
-			activity: {
-				name: `${client.guilds.cache.size} servers!`,
-				type: "WATCHING",
-			},
-		});
+		updatePresence(client);
 	}, 600000);
 });
 
