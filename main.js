@@ -62,4 +62,10 @@ client.on("message", (message) => {
 		});
 });
 
+process.on("SIGINT", () => {
+	client.destroy();
+	console.log("Destroyed client");
+	process.exit(0);
+});
+
 client.login(token);
