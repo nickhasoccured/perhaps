@@ -30,33 +30,29 @@ client.once("ready", () => {
 	setInterval(update, 600000);
 });
 
-client.on("message", (message) => {
+client.on("message", ({ author, cleanContent, channel, guild }) => {
 	if (
-		message.author.bot ||
-		!message.content ||
-		!message.cleanContent.toLowerCase().includes("perhaps")
-	) {
-		return;
-	}
+		author.bot ||
+		!cleanContent?.toLowerCase().includes("perhaps")) return;
 
-	if (cooldowns.get(message.channel.id) + 1000 > Date.now()) return;
+	if (cooldowns.get(channel.id) + 1000 > Date.now()) return;
 
-	message.channel
+	channel
 		.send(perhapsImage)
 		.catch((error) => {
 			console.error(
-				`Failed to perhaps in #${message.channel.name} (${
-					message.channel.id
+				`Failed to perhaps in #${channel.name} (${
+					channel.id
 				}) ${
-					message.guild
-						? `of server ${message.guild.name} (${message.guild.id})`
+					guild
+						? `of server ${guild.name} (${guild.id})`
 						: ""
 				}
                 ${error}`
 			);
 		})
 		.then(() => {
-			cooldowns.set(message.channel.id, Date.now());
+			cooldowns.set(channel.id, Date.now());
 		});
 });
 
