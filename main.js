@@ -14,22 +14,20 @@ const client = new Client();
 const cooldowns = new Collection();
 const perhapsImage = new MessageAttachment("./perhaps.jpg");
 
-const updatePresence = (c) => {
-	c.user.setPresence({
-		activity: {
-			name: `${client.guilds.cache.size} servers!`,
-			type: "WATCHING",
-		},
-	});
-};
-
 client.once("ready", () => {
 	console.log(`Logged in as ${client.user.tag} (${client.user.id})`);
 
-	updatePresence(client);
-	setInterval(() => {
-		updatePresence(client);
-	}, 600000);
+	const update = () => {
+		client.user.setPresence({
+			activity: {
+				name: `${client.guilds.cache.size} servers!`,
+				type: "WATCHING",
+			},
+		});
+	};
+
+	update();
+	setInterval(update, 600000);
 });
 
 client.on("message", (message) => {
