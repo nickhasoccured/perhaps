@@ -7,15 +7,12 @@ This program is distributed in the hope that it will be useful, but WITHOUT ANY 
 You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>
 */
 
-const Discord = require("discord.js");
+const { Client, Collection, MessageAttachment } = require("discord.js");
+const { token } = require("./config.json");
 
-const config = require("./config.json");
-
-const client = new Discord.Client();
-
-const cooldowns = new Discord.Collection();
-
-const perhapsImage = new Discord.MessageAttachment("./perhaps.jpg");
+const client = new Client();
+const cooldowns = new Collection();
+const perhapsImage = new MessageAttachment("./perhaps.jpg");
 
 const updatePresence = (c) => {
 	c.user.setPresence({
@@ -65,4 +62,4 @@ client.on("message", (message) => {
 		});
 });
 
-client.login(config.token);
+client.login(token);
